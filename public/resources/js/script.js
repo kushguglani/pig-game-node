@@ -48,16 +48,22 @@ document.querySelector('.rol-dice').addEventListener("click", function () {
 	if (gameStatus === 1) {
 		var dice = Math.floor(Math.random() * 6) + 1;
 		document.querySelector('.img-dice').style.display = 'initial';
-		document.querySelector('.img-dice').src = 'resources/img/dice-' + dice + '.png';
-		if (dice !== 1) {
-			//add score in current
-			currentScore += dice;
-			document.querySelector('#current-' + currentPlayer).innerText = currentScore;
-		}
-		else {
-			//NextTurn
-			next();
-		}
+		document.querySelector('.img-dice').src = 'resources/img/dice.gif';
+		setTimeout(() => {
+			console.log(dice);
+			document.querySelector('.img-dice').src = 'resources/img/dice-'+dice+'.png';	
+			if (dice !== 1) {
+				//add score in current
+				currentScore += dice;
+				document.querySelector('#current-' + currentPlayer).innerText = currentScore;
+			}
+			else {
+				//NextTurn
+				setTimeout(() => {
+				next();
+				},100);
+			}
+		}, 500);
 	}
 
 });
